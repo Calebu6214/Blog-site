@@ -1,0 +1,58 @@
+{% extends 'base.html'%}
+{% block content %}
+<!-- quote display -->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Yellowtail&display=swap" rel="stylesheet">
+<div class="container" style="font-family: 'Economica', sans-serif; text-align:center; font-size: 1.5em;" >
+  <div class="container-fluid"style="">
+    <div class="row">
+      <div class="col-lg-8 col-md-10 mx-auto">
+        <div class="heading">
+          <h1 style="color: rgb(202, 223, 82) ; text-align:center;">Welcome to home of blogs</h1>
+          <span class="subheading"style="color:"><em>{{quote.quote}}</em></span>
+          <h4 >{{quote.author}}</h4>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<!--  blog Content section -->
+<div class="container-fluid" style=" font-family: 'Economica', sans-serif;text-align: center;">
+  <div class="row" >
+    <div class="col-md-8 ">
+      {%for blog in blogs[::-1]%}
+      <div  style="text-decoration: none;">
+        <div class="panel panel-info" style="text-align:center; margin-left: 25%;">
+          <h2 href="{{url_for('main.update_aBlog', id = blog.id)}}">
+            <h3 class="panel panel-default"  style="text-decoration: none; color: rgb(43, 205, 226);">
+              {{blog.title}}
+            </h3>
+            <h3 class="">
+              {{blog.content | truncate (300)}}
+            </h3>
+          </h2>
+          <p class="post-meta">Posted by:
+            <a href="{{url_for('main.update_profile', id = blog.user_id)}}">{{blog.user.username}}</a> on
+            {{blog.posted.strftime('%B %d, %Y')}}
+          </p>
+        </div> 
+      </div>
+      <!-- update button -->
+      <a style="font-size: 15px;" href="{{url_for('main.update_aBlog', id=blog.id)}}" type="button" class="btn btn-default btn-sm">
+        <span class="glyphicon glyphicon-pencil"></span> Update blog
+      </a>
+      <!-- comment button -->
+      <a  style="font-size: 15px;"href="{{url_for('main.CommentBlog', id = blog.id)}}" type="button" class="btn btn-default btn-sm">
+        <span class="glyphicon glyphicon-pencil"></span> Comment
+      </a>
+      <!-- delete button -->
+      <a style="font-size: 20px;"href="{{url_for('main.delete_blog',id = blog.id)}}">
+        <span class="glyphicon glyphicon-trash"></span>
+      </a>
+      <hr>
+      {%endfor%}
+    </div>
+  </div>
+</div>
+{%endblock%}
