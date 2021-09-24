@@ -1,0 +1,27 @@
+{%extends "base.html"%}
+
+{%block content%}
+<br><br>
+<link rel="preconnect" href="https://fonts.gstatic.com">
+<link href="https://fonts.googleapis.com/css2?family=Economica:ital@1&display=swap" rel="stylesheet">
+<div class="container" style="font-family: 'Economica', sans-serif;">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-2"></div>
+            <div class="col-md-8">
+                <h3>Update blog </h3>
+                <form method="post">
+                    {{edit_form.hidden_tag()}}
+                    {{edit_form.title.label}} {{edit_form.title(class = "form-control", value = blog.title)}}
+                    <br>
+                    {{edit_form.blog.label}} {{edit_form.blog(value = blog.content)}}
+                    <br>
+                    {{edit_form.submit(class = "btn btn-primary")}}
+                </form>
+            </div>
+            <div class="col-md-2"></div>
+        </div>
+    </div>
+</div>
+
+{%endblock%}
