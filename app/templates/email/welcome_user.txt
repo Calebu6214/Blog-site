@@ -1,0 +1,2 @@
+Hello {{user.username}}.
+Thank you for signing with us.We will update you on any blog anytime and feel free to add your blog in our site!!
