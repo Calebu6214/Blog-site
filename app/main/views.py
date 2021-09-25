@@ -57,3 +57,20 @@ def CommentBlog(id):
         new_comment = Comment(blog_id=id, comment=comment, user=current_user)
         new_comment.save_comment()
     return render_template('comments.html', blog=blog, blog_comments=blogComments, comment_form=comment_form)
+
+@main.route('/update/<int:id>', methods=['GET', 'POST'])
+@login_required
+def update_aBlog(id):
+    blog = Blog.query.get_or_404(id)
+    form = BlogForm()
+    if form.validate_on_submit():
+        blog.title = form.title.data
+        blog.content = form.blog.data
+        db.session.add(blog)
+        db.session.commit()
+
+        return redirect(url_for('main.index'))
+    elif request.method == 'GET':
+        form.title.data = blog.title
+        form.blog.data = blog.content
+    return render_template('edit_ablog.html',blog=blog, form=form)
