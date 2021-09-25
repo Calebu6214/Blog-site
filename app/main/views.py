@@ -24,3 +24,24 @@ def index():
                      "email/welcome", new_sub.email)
 
     return render_template("index.html", blogs=blogs, quote=quote)
+
+@main.route("/blog/new", methods=["POST", "GET"])
+@login_required
+def new_blog():
+    blog_form = BlogForm()
+    if blog_form.validate_on_submit():
+        title = blog_form.title.data
+        blog_form.title.data = ""
+        content = (blog_form.blog.data)
+        blog_form.blog.data = ""
+        # new_blog = Blog(title = title,content = content,posted = datetime.now(),blog_by = current_user.username, user_id = current_user.id)
+        new_blog = Blog(title=title,content=content,posted=datetime.now(),blog_by=current_user.username,user_id=current_user.id)
+        new_blog.save_blog()
+        subs = Subscriber.query.all()
+        for sub in subs:
+            mail_message(title, "email/notification",
+                         sub.email, new_blog=new_blog)
+            pass
+        return redirect(url_for("main.index", id=new_blog.id))
+
+    return render_template("new_blog.html", blog_form=blog_form)
