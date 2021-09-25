@@ -1,0 +1,29 @@
+{%extends "base.html"%}
+
+{%block content%}
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Yellowtail&display=swap" rel="stylesheet">
+<div class="container" style="font-family: 'Yellowtail', cursive;" >
+    <div class="row">
+        <!-- <div class="col-md-2"></div> -->
+        <div class="col-md-8">
+            <h3>Update User Information</h3>
+            <form method="post">
+                {{form.hidden_tag()}}
+                {{form.first_name.label}} {{form.first_name(class = "form-control", value = user.first_name)}}
+                <br>
+                {{form.email.label}} {{form.email(class = "form-control", value = user.email)}}
+                <br>
+                {{form.bio.label}} {{form.bio(class = "form-control", value = user.bio)}}
+                <br>
+                {{form.submit(class = "btn btn-primary")}}
+            </form>
+        </div>
+        <!-- <div class="col-md-2"></div> -->
+    </div>
+</div>
+
+
+{%endblock%}

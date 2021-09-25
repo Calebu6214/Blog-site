@@ -20,7 +20,7 @@ def index():
 
         db.session.add(new_sub)
         db.session.commit()
-        mail_message("Thank you for subscribing to Glam-bay blogs",
+        mail_message("Thank you for signing",
                      "email/welcome", new_sub.email)
 
     return render_template("index.html", blogs=blogs, quote=quote)
