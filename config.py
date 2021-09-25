@@ -35,10 +35,8 @@ class ProdConfig(Config):
 
 
 class TestConfig(Config):
-    # SQLALCHEMY_DATABASE_URI = 'postgresql+psycopg2://caleb:caleb@localhost/blog_test'
-    pass
-
-
+    SQLALCHEMY_DATABASE_URI = 'postgresql+psycopg2://caleb:caleb@localhost/blog_test'
+    
 
 class DevConfig(Config):
     '''
