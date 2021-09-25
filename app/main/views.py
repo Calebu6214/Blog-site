@@ -96,3 +96,12 @@ def update_profile(id):
         db.session.add(user)
         db.session.commit()
     return render_template("profile/update.html",user = user,form = form) 
+
+@main.route('/delete/<int:id>', methods=['GET', 'POST'])
+@login_required
+def deleteComment(id):
+    comment =Comment.query.get_or_404(id)
+    db.session.delete(comment)
+    db.session.commit()
+    flash('comment succesfully deleted')
+    return redirect (url_for('main.index'))
