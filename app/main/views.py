@@ -74,3 +74,11 @@ def update_aBlog(id):
         form.title.data = blog.title
         form.blog.data = blog.content
     return render_template('edit_ablog.html',blog=blog, form=form)
+
+@main.route('/deleteblog/<int:id>', methods=['GET', 'POST'])
+@login_required
+def delete_blog(id):
+    blog = Blog.query.get_or_404(id)
+    db.session.delete(blog)
+    db.session.commit()
+    return redirect(url_for('main.index')) 
