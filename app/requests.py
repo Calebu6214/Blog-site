@@ -1,12 +1,12 @@
-import requests
-from .models import Quote
-
+import urllib.request,json
 
 def get_quote():
-    """
-     Function to consume http request and return a Quote class instance
-    """
-    response = requests.get("http://quotes.stormconsultancy.co.uk/random.json").json()
+    '''
+    Function that gets the random quotes
+    '''  
+    get_article_details_url = 'http://quotes.stormconsultancy.co.uk/random.json'.format()
+    with urllib.request.urlopen(get_article_details_url) as url:
+        quote_data = url.read()
+        quote_data_response = json.loads(quote_data)
 
-    random_quote = Quote(response.get("author"), response.get("quote"))
-    return random_quote
+    return quote_data_response

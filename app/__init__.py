@@ -1,5 +1,5 @@
 from flask import Flask
-from .main import views
+# from .main import views
 from config import config_options
 from flask_bootstrap import Bootstrap
 from flask_sqlalchemy import SQLAlchemy
@@ -45,8 +45,8 @@ def create_app(config_name):
     app.register_blueprint(auth_blueprint,url_prefix = '/authenticate')
 
     # setting config
-    from .requests import configure_request
-    configure_request(app)
+    # from urllib.request import configure_request
+    # configure_request(app)
 
     
     return app

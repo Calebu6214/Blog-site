@@ -1,5 +1,6 @@
 from . import db
 from werkzeug.security import generate_password_hash,check_password_hash
+# from werkzeug.urls import url_quote
 from flask_login import UserMixin
 from datetime import datetime
 from . import login_manager
@@ -87,7 +88,6 @@ class Quote:
         self.author = author
         self.quote = quote        
 
-# subscribers class
 class Subscriber(db.Model):
     '''
     Subscribers class to define subscriber Objects
@@ -107,7 +107,6 @@ class Subscriber(db.Model):
     def __repr__(self):
         return f'Subscriber {self.email}'
 
-# comments class
 class Comment(db.Model):
     '''
     Comments class to define comments Objects
@@ -136,3 +135,10 @@ class Comment(db.Model):
 
     def __repr__(self):
         return f'Comment {self.comment}'
+
+class PhotoProfile(db.Model):
+    __tablename__ = 'profile_photos'
+
+    id = db.Column(db.Integer,primary_key = True)
+    pic_path = db.Column(db.String())
+    user_id = db.Column(db.Integer,db.ForeignKey("users.id"))  

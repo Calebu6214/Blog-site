@@ -4,12 +4,12 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Yellowtail&display=swap" rel="stylesheet">
-<div class="container" style="font-family: 'Economica', sans-serif; text-align:center; font-size: 1.5em;" >
+<div class="container" style="font-family: 'Scheherazade New', serif; text-align:center; font-size: 1.5em;" >
   <div class="container-fluid"style="">
     <div class="row">
       <div class="col-lg-8 col-md-10 mx-auto">
         <div class="heading">
-          <h1 style="color: green ; text-align:center;">See the blogs over here</h1>
+          <h1 style="color: green ; text-align:center;">See the blogs over here;</h1>
           <span class="subheading"style="color:green"><em>{{quote.quote}}</em></span>
           <h4 >{{quote.author}}</h4>
         </div>
@@ -33,7 +33,7 @@
             </h3>
           </h2>
           <p class="post-meta">Posted by:
-            <a href="{{url_for('main.update_profile', id = blog.user_id)}}">{{blog.user.username}}</a> on
+            <a href="{{url_for('main.update_profile', id = blog.user_id)}}">{{blog.user.username}} Update profile</a> on
             {{blog.posted.strftime('%B %d, %Y')}}
           </p>
         </div> 

@@ -3,14 +3,16 @@ from wtforms import StringField, TextAreaField, SubmitField, SelectField
 from wtforms.validators import Required
 
 
-# user profile form
 class UserProfile(FlaskForm):
     first_name = StringField("Username")
     email = StringField(" Your Email")
     bio = TextAreaField("Bio")
     submit = SubmitField("Update")
 
-# blog form
+class UpdateProfile(FlaskForm):
+    bio = TextAreaField('Tell us about you.',validators = [Required()])
+    submit = SubmitField('Submit')
+
 class BlogForm(FlaskForm):
     title = StringField("Blog title:", validators=[Required()])
     blog = TextAreaField("Write your blog:", validators=[Required()])

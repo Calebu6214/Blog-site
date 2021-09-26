@@ -1,6 +1,7 @@
-<link rel="preconnect" href="https://fonts.gstatic.com">
-<link href="https://fonts.googleapis.com/css2?family=Economica:ital@1&display=swap" rel="stylesheet">
-<div class="navbar navbar-inverse" role="navigation"style="font-family: 'Economica', sans-serif; font-size: 20px;">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Scheherazade+New:wght@700&display=swap" rel="stylesheet">
+<div class="navbar navbar-inverse" role="navigation"style="font-family: 'Scheherazade New', serif; font-size: 20px;">
     <div class="container-fluid">
         <div class="navbar-header">
             <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
@@ -31,8 +32,9 @@
             <ul class="nav navbar-nav navbar-right">
                 {% if current_user.is_authenticated %}
                 <li class="nav-item">
-                    <a class="nav-link" href="/">{{current_user.username.capitalize()}}</a>
+                    <a class="nav-link" href="#">{{current_user.username.capitalize()}}</a>
                 </li>
+                <li><a href="{{url_for('main.profile', uname= current_user.id)}}">Profile</a></li>
                 <li><a href="{{url_for('auth.logout')}}">Sign out</a></li>
                 {% else %}
                 <li><a href="{{url_for('auth.login')}}">Sign in</a></li>
